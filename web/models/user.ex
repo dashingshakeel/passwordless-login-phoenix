@@ -19,4 +19,20 @@ defmodule PasswordlessLoginApp.User do
     |> unique_constraint(:email)
     |> unique_constraint(:access_token)
   end
+  def registration_changeset(struct, params \\ %{}) do
+  struct
+  |> changeset(params)
+  |> generate_access_token
+  end
+
+  defp generate_access_token(struct) do
+    token = SecureRandom.hex(30)
+
+    case Repo.get_by(__MODULE__, access_token: token) do
+      nil ->
+        put_change(struct, :access_token, token)
+      _ ->
+        generate_access_token(struct)
+    end
+  end
 end
