@@ -18,8 +18,8 @@ defmodule PasswordlessLoginApp.Router do
 
     get "/", PageController, :index
     resources "/session", SessionController, only: [:new, :create]
-end
-  end
+  end 
+ 
 
   # Other scopes may use custom stacks.
   # scope "/api", PasswordlessLoginApp do
