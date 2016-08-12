@@ -37,4 +37,11 @@ defmodule PasswordlessLoginApp.SessionController do
         |> redirect(to: page_path(conn, :index))
     end
   end
+
+  def delete(conn, _params) do
+    conn
+    |> PasswordlessLoginApp.SimpleAuth.logout()
+    |> put_flash(:info, "User logged out.")
+    |> redirect(to: page_path(conn, :index))
+  end
 end

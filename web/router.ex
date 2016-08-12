@@ -17,6 +17,7 @@ defmodule PasswordlessLoginApp.Router do
     pipe_through [:browser, PasswordlessLoginApp.SimpleAuth]
     get "/", PageController, :index
     resources "/session", SessionController, only: [:new, :create,:show]
+    resources "/session", SessionController, only: [:delete], singleton: true
   end 
  
 

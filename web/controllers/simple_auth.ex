@@ -16,4 +16,7 @@ defmodule PasswordlessLoginApp.SimpleAuth do
     user = Repo.get(User, user_id)
     assign(conn, :current_user, user)
   end
+  def logout(conn) do
+    conn |> configure_session(drop: true)
+  end
 end
