@@ -1,5 +1,7 @@
 defmodule PasswordlessLoginApp.User do
   use PasswordlessLoginApp.Web, :model
+  alias PasswordlessLoginApp.Repo
+  
 
   schema "users" do
     field :email, :string

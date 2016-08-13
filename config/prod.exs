@@ -59,7 +59,9 @@ config :logger, level: :info
 # for the new static assets to be served after a hot upgrade:
 #
 #     config :passwordless_login_app, PasswordlessLoginApp.Endpoint, root: "."
-
+config :passwordless_login_app,
+       mailgun_domain: System.get_env("MAILGUN_DOMAIN"),
+       mailgun_key: System.get_env("MAILGUN_API_KEY")
 # Finally import the config/prod.secret.exs
 # which should be versioned separately.
 import_config "prod.secret.exs"
