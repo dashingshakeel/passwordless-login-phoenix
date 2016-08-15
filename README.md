@@ -8,7 +8,7 @@ To start your Phoenix app:
   * Start Phoenix endpoint with `mix phoenix.server`
 
 you can visit  for online watching
-http://stormy-fjord-92501.herokuapp.com/
+http://stormy-fjord-92501.herokuapp.com/session/new
 
   * Official website: http://www.phoenixframework.org/
   * Guides: http://phoenixframework.org/docs/overview
