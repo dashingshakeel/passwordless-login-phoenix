@@ -13,12 +13,18 @@ use Mix.Config
 # which you typically run after static files are built.
 config :passwordless_login_app, PasswordlessLoginApp.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "example.com", port: 80],
-  cache_static_manifest: "priv/static/manifest.json"
-
+  url: [scheme: "https", host: "stormy-fjord-92501.herokuapp.com", port: 443],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]],
+  cache_static_manifest: "priv/static/manifest.json",
+  secret_key_base: System.get_env("SECRET_KEY_BASE")
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :passwordless_login_app, PasswordlessLoginApp.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: System.get_env("DATABASE_URL"),
+  pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+  ssl: true
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
